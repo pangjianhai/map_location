@@ -1,1 +1,1 @@
-地理位置组件
+this is location map component!
