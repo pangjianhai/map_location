@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.mapapi.map.MapView;
+
 public class MainActivity extends Activity {
 
 	private TextView position_text_view;
@@ -18,6 +20,9 @@ public class MainActivity extends Activity {
 	private LocationManager lm;
 
 	private String provider;
+
+	// private BMapManager manager;
+	private MapView mapView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +41,12 @@ public class MainActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
-		System.out.println("--------------------------->>>>>>>>>>>"+provider);
+		System.out.println("--------------------------->>>>>>>>>>>" + provider);
 		Location location = lm.getLastKnownLocation(provider);
 		if (location != null) {
 			showLocation(location);
 		}
-		System.out.println("--------------------------->>>>>>>>>>>"+location);
+		System.out.println("--------------------------->>>>>>>>>>>" + location);
 		lm.requestLocationUpdates(provider, 1000, 1, ll);
 	}
 
@@ -49,7 +54,9 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onLocationChanged(Location location) {
-			System.out.println("onLocationChanged--------------------------->>>>>>>>>>>"+location);
+			System.out
+					.println("onLocationChanged--------------------------->>>>>>>>>>>"
+							+ location);
 			showLocation(location);
 		}
 
@@ -74,6 +81,10 @@ public class MainActivity extends Activity {
 		String lon = l.getLongitude() + "";
 		String str = lat + "\r\n" + lon;
 		position_text_view.setText(str);
+	}
+
+	private void init() {
+		mapView = (MapView) findViewById(R.id.map_view);
 	}
 
 }

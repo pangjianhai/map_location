@@ -14,4 +14,11 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true" >
+    </com.baidu.mapapi.map.MapView>
+
 </RelativeLayout>
